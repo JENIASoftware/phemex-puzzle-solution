@@ -17,11 +17,11 @@ public class BitcoinAddress {
 		BigInteger phemex = new BigInteger(reverseHex(bytesToHex(Base58Xrp.decode("Phemex"))), 16);
 		System.out.println("Phemex  " + phemex);
 
-		BigInteger calculation = eprime.multiply(satoshiNakamoto).multiply(phemex);
-		System.out.println("Calculation  " + calculation);
-		System.out.println("CalculationHex  " + calculation.toString(16));
+		BigInteger privateKey = eprime.multiply(satoshiNakamoto).multiply(phemex);
+		System.out.println("privateKey  " + privateKey);
+		System.out.println("privateKeyHex  " + privateKey.toString(16));
 		
-		ECKey ac = ECKey.fromPrivate(calculation, true);
+		ECKey ac = ECKey.fromPrivate(privateKey, true);
 		System.out.println(ac.toAddress(MainNetParams.get()));
 
 	}
